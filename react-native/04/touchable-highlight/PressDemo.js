@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         color: '#FFF'
     },
     touchable: {
-        borderRadius: 100
+        borderRadius: 100,
     },
     button: {
         backgroundColor: '#FF0000',
