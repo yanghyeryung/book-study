@@ -4,6 +4,8 @@ import { StyleSheet, Text, View, Alert, Platform } from 'react-native';
 export default class App extends React.Component {
     componentDidMount() {
         Alert.alert('Hey', 'Ios');
+        console.log('ios 로그다');
+        console.warn('warning!!!');
     }
 
     render() {
