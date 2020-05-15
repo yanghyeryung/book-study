@@ -75,9 +75,9 @@ const (
     - float 및 복소수 타입 : float32 float64 complex64 complex128
     - 기타 타입 : byte(unit8과 동일, 바이트 코드에 사용) rune(int32와 동일, 유티코드 코드포인트에 사용) 
 - 문자열
-    - 문자열 리터럴은 Back Quote(` `) 혹은 이중인용부호(" ")를 사용하여 표현
-    - Back Quote(` `)안의 문자열은 별도로 해석되지 않음 (\n이 NewLine으로 해석되지 않음)
-    - Back Quote(` `)안의 문자열은 복수 라인의 문자열을 표현 가능
+    - 문자열 리터럴은 Back Quote(\` \`) 혹은 이중인용부호(" ")를 사용하여 표현
+    - Back Quote(\` \`)안의 문자열은 별도로 해석되지 않음 (\n이 NewLine으로 해석되지 않음)
+    - Back Quote(\` \`)안의 문자열은 복수 라인의 문자열을 표현 가능
     
 ```
 package main
