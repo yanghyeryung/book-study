@@ -28,7 +28,7 @@ $ go build test.go
 - var 키워드 + 변수명 + 변수 타입
 - 선언된 변수가 사용하지 않으면 에러 
 - 변수 선언시 초기값 지정하지 않으면 zero value를 할당
-    - 숫자 - 0, boole - false, string = ''
+    - 숫자 : 0, boole : false, string : ''
 - 함수 내에서는 var를 생략하고 i:=1이라고 사용 가능 
 ```
 var a int  
@@ -39,7 +39,6 @@ f 12.0
 
 var i, j, k int
 var i, j, k int = 1, 2, 3
-
 ```
 
 - 상수는 키워드 const를 사용하여 선언
@@ -285,7 +284,6 @@ END:
      
 L1:
     for {
-     
         if i == 0 {
             break L1
         }
@@ -351,8 +349,95 @@ func sum(nums ...int) (count int, total int) {
 }
 ```
 ## Go 익명함수
+- 함수명을 갖지 않는 익명함수를 정의할 수 있음
+- 익명함수는 변수에 할당하거나 다른 함수의 파라미터로 사용됨
+- type 문을 이용하여 함수의 원형을 정의 가능 
+```
+package main
+ 
+func main() {
+    sum := func(n ...int) int { //익명함수 정의
+        s := 0
+        for _, i := range n {
+            s += i
+        }
+        return s
+    }
+ 
+    result := sum(1, 2, 3, 4, 5) //익명함수 호출
+    println(result)
+}
+
+//
+func calc(f func(int, int) int, a int, b int) int {
+    result := f(a, b)
+    return result
+}
+// ==>
+// 원형 정의
+type calculator func(int, int) int
+ 
+// calculator 원형 사용
+func calc(f calculator, a int, b int) int {
+    result := f(a, b)
+    return result
+}
+```
+
 ## Go 클로저
+- 함수 바깥에 있는 변수를 참조하는 함수 값
+```
+package main
+ 
+func nextValue() func() int {
+    i := 0
+    return func() int {
+        i++
+        return i
+    }
+}
+ 
+func main() {
+    next := nextValue()
+ 
+    println(next())  // 1
+    println(next())  // 2
+    println(next())  // 3
+ 
+    anotherNext := nextValue()
+    println(anotherNext()) // 1 다시 시작
+    println(anotherNext()) // 2
+}
+```
+
 ## Go 컬렉션 - 배열
+- 연속적인 메모리 공간에 동일한 타입의 데이타를 순차적으로 저장하는 자료구조 
+- var 변수명 [배열크기] 데이터타입의 형식으로 정의
+```
+package main
+ 
+func main() {
+    var a [3]int  //정수형 3개 요소를 갖는 배열 a 선언
+    a[0] = 1
+    a[1] = 2
+    a[2] = 3
+    println(a[1]) // 2 출력
+    
+    // 초기값 1, 2, 3으로 설정
+    var a1 = [3]int{1, 2, 3}
+    var a3 = [...]int{1, 2, 3} //배열크기 자동으로
+    
+    var multiArray [3][4][5]int  // 다차원 배열 정의
+    multiArray[0][1][2] = 10     // 다차원 배열 사용
+    
+    var a = [2][3]int{
+        {1, 2, 3},
+        {4, 5, 6},  //끝에 콤마 추가
+    }
+    println(a[1][2])
+}
+```
+
 ## Go 컬렉션 - Slice
 ## Go 컬렉션 - Map
 ## Go 패키지
