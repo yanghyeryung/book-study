@@ -6,6 +6,7 @@
 
 - elaticsearch정보를 kibana, fluentd에 설정 
 - https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/fluentd-elasticsearch
+- https://coe.gitbook.io/guide/log/efk
 
 
 
